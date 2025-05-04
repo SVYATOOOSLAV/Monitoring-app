@@ -5,4 +5,10 @@ scrape_configs:
     static_configs:
       - targets: ['backend:8080']
       # указан докер контейнер (backend), лучше указывать домен на котором находиться prometheus
+
+  - job_name: "Spring boot app localhost"
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 2s
+    static_configs:
+      - targets: ['host.docker.internal:8080']
       # host.docker.internal - приложение запущено локально, prometheus в контейнере
